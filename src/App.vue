@@ -9,15 +9,20 @@
   </header>
   <main>
     <WeatherTile/>
+    <MusicPlayer/>
   </main>
 </template>
 <script>
   import Weather from '@/components/Weather.vue'
+  import MusicPlayer from '@/components/MusicPlayer.vue'
 export default {
   components:{
-    "WeatherTile":Weather
+    "WeatherTile":Weather,
+    "MusicPlayer":MusicPlayer
   }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>
+

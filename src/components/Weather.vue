@@ -7,9 +7,10 @@
       <img/>
     </div>
     <div id="info">
-      Temperature: {{weather.temperatura}} C
-      Pressure: {{weather.cisnienie}} hPa
-      Wind: {{windDirection}} {{weather.predkosc_wiatru}} km/h
+      Temperature: {{weather.temperatura}} C <br/>
+      Pressure: {{weather.cisnienie}} hPa<br/>
+      Wind: {{windDirection}} {{weather.predkosc_wiatru}} km/h<br/>
+      
     </div>
   </div>
 </template>
@@ -31,28 +32,28 @@ export default {
     windDirection(){
       const direction = this.weather.kierunek_wiatru
       if (direction>330&&direction<30){
-        return "E"
+        return "󰁔"
       }
       else if (direction>30&&direction<60){
-        return "NE"
+        return "󰁜"
       }
       else if (direction>60&&direction<120){
-        return "N"
+        return "󰁝"
       }
       else if (direction>120&&direction<160){
-        return "NW"
+        return "󰁛"
       }
       else if (direction>160&&direction<210){
-        return "W"
+        return "󰁍"
       }
       else if (direction>210&&direction<240){
-        return "SW"
+        return "󰁂"
       }
       else if (direction>240&&direction<300){
-        return "S"
+        return "󰁅"
       }
       else if (direction>300&&direction<330){
-        return "SE"
+        return "󰁃"
       }
     }
   },
