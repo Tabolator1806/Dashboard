@@ -24,3 +24,24 @@ nav{
 .tile button{
   color:#2DA457;
 }
+input[type=range]{
+  -webkit-appearance:none;
+  width:250px;
+}
+input[type=range]::-webkit-slider-runnable-track{
+  background:#2DA457;
+  height:3px;
+  width:100%;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  height:15px;
+  width:9px;
+  border:2px solid;
+  border-top-color:rgb(55, 200, 106);
+  border-right-color:rgb(35, 128, 68);
+  border-bottom-color:rgb(35, 128, 68);
+  border-left-color:rgb(55, 200, 106);
+  background:#2DA457;
+  margin-top:-6px;
+}

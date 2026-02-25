@@ -5,12 +5,13 @@
     </div>
     <div id="info">
       <h2>{{title}}</h2>
-      <h2>{{showCurrentTime}}/{{showDuration}}</h2>
-      <input type="range" :max="trackduration" v-model="audio.currentTime"/>
+      <div id="time">{{showCurrentTime}}/{{showDuration}}</div>
+      <input type="range" :max="trackduration" v-model="audio.currentTime" id="timeslider"/><br/>
       <button @click="prevTrack">Previous</button>
       <button @click="playTrack" v-if="playswitch">Play</button>
       <button @click="stopTrack" v-else="playswitch">Stop</button>
       <button @click="nextTrack">Next</button>
+      <input type="range" :max="1" step="0.1" v-model="audio.volume" id="volume"/>
     </div>
   </div>
 </template>
@@ -104,29 +105,21 @@ export default {
 }
 #info{
   float:left;
-}
-#info h2{
-  width:100%
-}
-input[type=range]{
-  -webkit-appearance:none;
-  margin-bottom:10px;
-}
-input[type=range]::-webkit-slider-runnable-track{
-  background:#2DA457;
-  height:3px;
-  width:100%;
-}
-input[type=range]::-webkit-slider-thumb{
-  -webkit-appearance:none;
-  height:12px;
-  width:6px;
-  border:2px solid;
-  border-top-color:rgb(55, 200, 106);
-  border-right-color:rgb(35, 128, 68);
-  border-bottom-color:rgb(35, 128, 68);
-  border-left-color:rgb(55, 200, 106);
-  background:#2DA457;
-  margin:-6px;
+  width:fit-content;
+  h2{
+    width:100%;
+    margin-bottom:20px;
+  }
+  #time{
+    width:100%;
+    text-align:right;
+  }
+  #timeslider{
+    margin-bottom:20px;
+  }
+  #volume{
+    margin-left:10px;
+    width:80px;
+  }
 }
 </style>
