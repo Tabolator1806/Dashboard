@@ -1,17 +1,26 @@
 <template>
   <div id="musicplayer" class="tile">
-    <div id="image">
-      <img :src="album" alt="albumImage" width="70px" height="70px"/>
-    </div>
-    <div id="info">
-      <h2>{{title}}</h2>
-      <div id="time">{{showCurrentTime}}/{{showDuration}}</div>
-      <input type="range" :max="trackduration" v-model="audio.currentTime" id="timeslider"/><br/>
-      <button @click="prevTrack">Previous</button>
-      <button @click="playTrack" v-if="playswitch">Play</button>
-      <button @click="stopTrack" v-else="playswitch">Stop</button>
-      <button @click="nextTrack">Next</button>
-      <input type="range" :max="1" step="0.1" v-model="audio.volume" id="volume"/>
+    <div id="title">Music Player</div>
+    <div id="main">
+      <div id="image">
+        <img :src="album" alt="albumImage" width="100px" height="100px"/>
+      </div>
+      <div id="info">
+        <h2>{{title}}</h2>
+        <div id="time">{{showCurrentTime}}/{{showDuration}}</div>
+        <input type="range" :max="trackduration" v-model="audio.currentTime" id="timeslider"/><br/>
+        <div id="controls">
+          <div id="buttons">
+            <button @click="prevTrack">󰒮</button>
+            <button @click="playTrack" v-if="playswitch">󰐊</button>
+            <button @click="stopTrack" v-else="playswitch">󰏤</button>
+            <button @click="nextTrack">󰒭</button>
+          </div>
+          <div id=volume>
+            <button>M</button><input type="range" :max="1" step="0.1" v-model="audio.volume"/>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -32,6 +41,7 @@ export default {
       trackduration:0,
       currenttracktime:0,
       volume:0,
+      autoplay:true
     }
   },
   methods: {
@@ -59,15 +69,20 @@ export default {
       if (this.index<this.musiclist.length-1)
         this.index += 1
       this.refresh()
+      this.playTrack()
     },
     prevTrack(){
       this.stopTrack()
       if (this.index>0)
         this.index -= 1
       this.refresh()
+      this.playTrack()
     },
     trackTime(){
       this.currenttracktime=this.audio.currentTime
+      if(this.autoplay&&this.trackduration==this.currenttracktime){
+        this.nextTrack()
+      }
       setTimeout(() => {
         if(!this.playswitch){
           this.trackTime()
@@ -96,30 +111,64 @@ export default {
 }
 </script>
 <style scoped>
-#image{
-  display:flex;
-  align-items:center;
-  height:100%;
-  float:left;
-  padding-left:30px;
-}
-#info{
-  float:left;
-  width:fit-content;
-  h2{
-    width:100%;
-    margin-bottom:20px;
-  }
-  #time{
-    width:100%;
-    text-align:right;
-  }
-  #timeslider{
-    margin-bottom:20px;
-  }
-  #volume{
-    margin-left:10px;
-    width:80px;
+#musicplayer{
+  width:500px;
+  #main{
+    display:flex;
+    flex-direction:row;
+
+    #image{
+      display:flex;
+      align-items:center;
+      height:100%;
+      padding:10px;
+    }
+    #info{
+      width:fit-content;
+      flex-grow:1;
+      position:relative;
+      h2{
+        width:100%;
+        margin-bottom:10px;
+        text-align:center;
+      }
+      #time{
+        width:100%;
+        text-align:right;
+      }
+      #timeslider{
+        margin-bottom:10px;
+        width:100%;
+      }
+      #controls{
+        display:block;
+        position:relative;
+        width:100%;
+        height:50px;
+        #volume{
+          position:absolute;
+          right:5px;
+          bottom:40%;
+          display:flex;
+          gap:5px;
+          input[type=range]{
+            width:80px;
+          }
+          button{
+            width:25px;
+          }
+        }
+        #buttons{
+          display:flex;
+          position:absolute;
+          right:45%;
+          bottom:40%;
+          button{
+            width:25px;
+          }
+        }
+      }
+    }
   }
 }
 </style>

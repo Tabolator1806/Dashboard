@@ -1,16 +1,16 @@
 <template>
   <div id="weather" class="tile">
-    <h2>
-      Todays weather
-    </h2>
-    <div id="img">
-      <img/>
-    </div>
-    <div id="info">
-      Temperature: {{weather.temperatura}} C <br/>
-      Pressure: {{weather.cisnienie}} hPa<br/>
-      Wind: {{windDirection}} {{weather.predkosc_wiatru}} km/h<br/>
-      
+    <div id="title">Todays weather</div>
+    <div>
+      <div id="img">
+        {{weatherIcon}}
+      </div>
+      <div id="info">
+        Temperature: {{weather.temperatura}} C <br/>
+        Pressure: {{weather.cisnienie}} hPa<br/>
+        Wind: {{windDirection}} {{weather.predkosc_wiatru}} km/h<br/>
+        Humidity: {{weather.wilgotnosc_wzgledna}} %
+      </div>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@
 export default {
   data() {
     return {
-      "weather":{}
+      "weather":{},
     }
   },
   created(){
@@ -29,6 +29,15 @@ export default {
     })
   },
   computed: {
+    weatherIcon(){
+      if(this.weather.suma_opadu>0){
+        if(this.weather.temperatura<0){
+          return ""
+        }
+        return ""
+      }
+      return ""
+    },
     windDirection(){
       const direction = this.weather.kierunek_wiatru
       if (direction>330&&direction<30){
@@ -60,18 +69,19 @@ export default {
 }
 </script>
 <style>
-  h2{
-    text-align:center;
-    width:100%;
-  }
-  #img{
-    width:150px;
-    float:left;
-    background:red;
-  }
-  #info{
-    margin-left:50px;
-    width:150px;
-    float:left;
+  #weather{
+    width:350px;
+    #img{
+      width:29%;
+      float:left;
+      text-align:center;
+      font-size:80px;
+    }
+    #info{
+      width:70%;
+      float:left;
+      text-align:right;
+      margin-top:8px;
+    }
   }
 </style>
