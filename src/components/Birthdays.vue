@@ -3,8 +3,11 @@
     <div id="title" v-if="daysleft">Incoming Birthday</div>
     <div id="title" v-else="daysleft">Todays Birthday</div>
     <div id="display">
-      <div v-if="daysleft">{{daysleft}}</div>
-      <div v-else="daysleft"></div>
+      <div v-if="daysleft" id="daysLeft">
+        <div id="days"> {{daysleft}}</div>
+        <div id="text">days</div>
+      </div>
+      <div v-else="daysleft" id="cake"></div>
     </div>
     <div id="info">
       Name: {{fullname.split(" ")[0]}} <br/>
@@ -108,8 +111,14 @@ export default {
     width:29%;
     float:left;
     text-align:center;
-    div{
+    #cake{
       font-size:80px;
+    }
+    #days{
+      font-size:65px;
+    }
+    #text{
+      font-size:25px;
     }
   }
   #info{

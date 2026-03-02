@@ -17,7 +17,7 @@
             <button @click="nextTrack">󰒭</button>
           </div>
           <div id=volume>
-            <button>M</button><input type="range" :max="1" step="0.1" v-model="audio.volume"/>
+            <button>{{showVolume}}</button><input type="range" :max="1" step="0.1" v-model="audio.volume" @input="setVolume"/>
           </div>
         </div>
       </div>
@@ -106,6 +106,14 @@ export default {
       const seconds = String(Math.floor((this.trackduration) % 60))
       const minutes = String(Math.floor((this.trackduration) / 60))
       return `${this.addZero(minutes)}:${this.addZero(seconds)}`
+    },
+    showVolume(){
+      if (this.audio.volume>0.75) return "󰕾"
+      else if (this.audio.volume>0.5) return "󰖀"
+      else if (this.audio.volume==0) return "󰝟"
+    },
+    setVolume(){
+      this.volume = this.audio.volume
     }
   },
 }

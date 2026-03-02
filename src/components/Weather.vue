@@ -6,7 +6,7 @@
         {{weatherIcon}}
       </div>
       <div id="info">
-        Temperature: {{weather.temperatura}} C <br/>
+        Temperature: {{weather.temperatura}}°C <br/>
         Pressure: {{weather.cisnienie}} hPa<br/>
         Wind: {{windDirection}} {{weather.predkosc_wiatru}} km/h<br/>
         Humidity: {{weather.wilgotnosc_wzgledna}} %
