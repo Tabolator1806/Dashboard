@@ -1,6 +1,6 @@
 <template>
   <div id="birthdays" class="tile">
-    <div id="title" v-if="daysleft">Coming Birthday</div>
+    <div id="title" v-if="daysleft">Incoming Birthday</div>
     <div id="title" v-else="daysleft">Todays Birthday</div>
     <div id="display">
       <div v-if="daysleft">{{daysleft}}</div>
@@ -19,25 +19,19 @@
 import birthdays from '@/assets/birthdays.json'
 export default {
   created(){
-    const currentDate = new Date(Date.now())
-    const currentMonth = currentDate.getMonth()
     const daysThatHappened = this.showInDays(Date.now())
-    let nextBirthdayPerson = {}
+    let birthdayPeople = []
     for(let i = 0; i < this.birthdaylist.length; i++){
       const person = this.birthdaylist[i]
       const daysToBirthday = this.showInDays(person.birthdate) - daysThatHappened
       if(daysToBirthday>=0){
-        const birthdate = new Date(person.birthdate)
-        nextBirthdayPerson = person
-        this.fullname=person.fullname
-        this.birthdate = `${this.addZero(birthdate.getDate())}.${this.addZero(birthdate.getMonth()+1)}.${birthdate.getFullYear()}`
-        this.daysleft = daysToBirthday
-        this.age = currentDate.getFullYear() - birthdate.getFullYear()
-        this.sign = this.getAstrologySign(this.showInDays(person.birthdate))
-        break
+        person.daysToBirthday = daysToBirthday
+        birthdayPeople.push(person)
       }
     }
-    console.log(nextBirthdayPerson)
+    this.sortByDays(birthdayPeople)
+    console.log(birthdayPeople)
+    this.showInfo(birthdayPeople[0])
   },
   data() {
     return {
@@ -83,7 +77,25 @@ export default {
       if (days>=this.days[9]+23&&days<=this.days[10]+21) return "Scorpio 󰪆"
       if (days>=this.days[10]+22&&days<=this.days[11]+21) return "Sagittarius 󰪅"
       if (days>=this.days[11]+22&&days<=19) return "Capricorn 󰪀"
-
+    },
+    showInfo(person){
+        const birthdate = new Date(person.birthdate)
+        this.fullname=person.fullname
+        this.birthdate = `${this.addZero(birthdate.getDate())}.${this.addZero(birthdate.getMonth()+1)}.${birthdate.getFullYear()}`
+        this.daysleft = person.daysToBirthday
+        this.age = (new Date(Date.now())).getFullYear() - birthdate.getFullYear()
+        this.sign = this.getAstrologySign(this.showInDays(person.birthdate))
+    },
+    sortByDays(array){
+      for(let i = 0; i < array.length; i++){
+        for(let j = 0; j < array.length - 1; j++){
+          if(array[i].daysToBirthday<array[j].daysToBirthday){
+            let tmp = array[i]
+            array[i] = array[j]
+            array[j] = tmp
+          }
+        }
+      }
     }
   },
 
