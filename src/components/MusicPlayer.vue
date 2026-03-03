@@ -11,13 +11,13 @@
         <input type="range" :max="trackduration" v-model="audio.currentTime" id="timeslider"/><br/>
         <div id="controls">
           <div id="buttons">
-            <button @click="prevTrack">󰒮</button>
+            <button @click="changeTrack(-1)">󰒮</button>
             <button @click="playTrack" v-if="playswitch">󰐊</button>
             <button @click="stopTrack" v-else="playswitch">󰏤</button>
-            <button @click="nextTrack">󰒭</button>
+            <button @click="changeTrack(1)">󰒭</button>
           </div>
           <div id=volume>
-            <button>{{showVolume}}</button><input type="range" :max="1" step="0.1" v-model="audio.volume" @input="setVolume"/>
+            <button @click="mute">{{showVolume}}</button><input type="range" :max="1" step="0.1" v-model="volume" @input="setVolume"/>
           </div>
         </div>
       </div>
@@ -40,8 +40,9 @@ export default {
       playswitch:true,
       trackduration:0,
       currenttracktime:0,
-      volume:0,
-      autoplay:true
+      volume:1,
+      autoplay:false,
+      savedVolume:1
     }
   },
   methods: {
@@ -52,48 +53,53 @@ export default {
       this.currenttracktime = 0
       this.audio.addEventListener("loadeddata",()=>{
         this.trackduration = this.audio.duration
-        this.volume = this.audio.volume
+        this.audio.volume = this.volume
       })
     this.audio.addEventListener("playing",()=>this.trackTime())
     },
     playTrack(){
       this.audio.play()
       this.playswitch = false
+      this.autoplay = true
     },
     stopTrack(){
       this.audio.pause()
       this.playswitch = true
     },
-    nextTrack(){
+    changeTrack(number){
       this.stopTrack()
-      if (this.index<this.musiclist.length-1)
-        this.index += 1
+      this.index = (this.index + number)%(this.musiclist.length)
+      if (this.index<0) this.index = (this.musiclist.length) + this.index
       this.refresh()
-      this.playTrack()
-    },
-    prevTrack(){
-      this.stopTrack()
-      if (this.index>0)
-        this.index -= 1
-      this.refresh()
-      this.playTrack()
+      if (this.autoplay)
+        this.playTrack()
     },
     trackTime(){
       this.currenttracktime=this.audio.currentTime
+      this.audio.volume = this.volume
       if(this.autoplay&&this.trackduration==this.currenttracktime){
-        this.nextTrack()
+        this.changeTrack(1)
       }
       setTimeout(() => {
         if(!this.playswitch){
           this.trackTime()
         }
-      }, 1000);
+      }, 100);
     },
     addZero(time){
       if(time.length == 1){
         return `0${time}`
       }
       return time
+    },
+    mute(){
+      if(this.volume){
+        this.savedVolume = this.volume
+        this.volume=0
+      }
+      else{
+        this.volume = this.savedVolume
+      }
     }
   },
   computed: {
@@ -108,13 +114,10 @@ export default {
       return `${this.addZero(minutes)}:${this.addZero(seconds)}`
     },
     showVolume(){
-      if (this.audio.volume>0.75) return "󰕾"
-      else if (this.audio.volume>0.5) return "󰖀"
-      else if (this.audio.volume==0) return "󰝟"
+      if (this.volume>0.5) return "󰕾"
+      if (this.volume<=0.5&&this.volume!=0) return "󰖀"
+      if (this.volume==0) return "󰝟"
     },
-    setVolume(){
-      this.volume = this.audio.volume
-    }
   },
 }
 </script>
