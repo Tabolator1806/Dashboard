@@ -3,11 +3,11 @@
     <div id="title" v-if="daysleft">Incoming Birthday</div>
     <div id="title" v-else="daysleft">Todays Birthday</div>
     <div id="display">
-      <div v-if="daysleft" id="daysLeft">
-        <div id="days"> {{daysleft}}</div>
-        <div id="text">days</div>
+      <div v-if="daysleft">
+        <div style="font-size:75px;">{{daysleft}}</div>
+        <div style="font-size:20px;margin-top:-10px;">days</div>
       </div>
-      <div v-else="daysleft" id="cake"></div>
+      <div v-else="daysleft"></div>
     </div>
     <div id="info">
       Name: {{fullname.split(" ")[0]}} <br/>
@@ -32,7 +32,8 @@ export default {
         birthdayPeople.push(person)
       }
     }
-    this.sortByDays(birthdayPeople)
+    console.log(birthdayPeople)
+    this.sortByDaysLeft(birthdayPeople)
     console.log(birthdayPeople)
     this.showInfo(birthdayPeople[0])
   },
@@ -89,10 +90,12 @@ export default {
         this.age = (new Date(Date.now())).getFullYear() - birthdate.getFullYear()
         this.sign = this.getAstrologySign(this.showInDays(person.birthdate))
     },
-    sortByDays(array){
-      for(let i = 0; i < array.length; i++){
-        for(let j = 0; j < array.length - 1; j++){
-          if(array[i].daysToBirthday<array[j].daysToBirthday){
+    sortByDaysLeft(array){
+      for(let i = 0; i < array.length - 1; i++){
+        for(let j = 0; j < array.length - 2; j++){
+          const first = array[i].daysToBirthday
+          const second = array[j].daysToBirthday
+          if(first<second){
             let tmp = array[i]
             array[i] = array[j]
             array[j] = tmp
@@ -100,7 +103,7 @@ export default {
         }
       }
     }
-  },
+  }
 
 }
 </script>
@@ -111,14 +114,8 @@ export default {
     width:29%;
     float:left;
     text-align:center;
-    #cake{
+    div{
       font-size:80px;
-    }
-    #days{
-      font-size:65px;
-    }
-    #text{
-      font-size:25px;
     }
   }
   #info{

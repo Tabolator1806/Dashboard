@@ -6,7 +6,6 @@
 *{
   font-family:"JetBrainsMonoNL Nerd Font Propo";
   font-size:15px;
-  background:black;
   margin:0;
   box-sizing:border-box;
 }
@@ -15,13 +14,17 @@ nav{
   margin-bottom:20px;
   font-size:20px;
 }
+body{
+  background:black;
+}
 .tile{
   border:2px solid #2DA457;
   flex-grow:1;
   width:fit-content;
   height:170px;
   padding:10px;
-  background: rgba(0,0,0,0.5);
+  flex:1 0 30%;
+  /* background: rgba(0,0,0,0.5); */
   color:#2DA457;
   #title{
     text-align:center;
@@ -34,17 +37,19 @@ nav{
 }
 .tile button{
   color:#2DA457;
+  background:black;
 }
 input[type=range]{
   -webkit-appearance:none;
   width:250px;
+  background:transparent;
 }
-input[type=range]::-webkit-slider-runnable-track{
+input[type=range]::-webkit-slider-runnable-track,input[type=range]::-moz-range-track{
   background:#2DA457;
   height:3px;
   width:100%;
 }
-input[type=range]::-webkit-slider-thumb{
+input[type=range]::-webkit-slider-thumb,input[type=range]::-moz-range-thumb{
   -webkit-appearance:none;
   height:15px;
   width:9px;
@@ -58,7 +63,9 @@ input[type=range]::-webkit-slider-thumb{
 }
 main{
   display:flex;
+  flex-wrap:wrap;
   flex-direction:row;
   gap:10px;
   margin:0 100px;
+  background:black;
 }

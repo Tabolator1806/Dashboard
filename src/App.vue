@@ -9,19 +9,22 @@
   </header>
   <main>
     <WeatherTile/>
-    <MusicPlayer/>
+    <Steam/>
     <BirthdayTile/>
+    <MusicPlayer/>
   </main>
 </template>
 <script>
 import Weather from '@/components/Weather.vue'
 import MusicPlayer from '@/components/MusicPlayer.vue'
 import Birthdays from '@/components/Birthdays.vue'
+import Steam from '@/components/Steam.vue'
 export default {
   components:{
     "WeatherTile":Weather,
     "MusicPlayer":MusicPlayer,
-    "BirthdayTile":Birthdays
+    "BirthdayTile":Birthdays,
+    "Steam":Steam
   }
 }
 </script>
