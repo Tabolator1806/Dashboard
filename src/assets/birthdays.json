@@ -79,6 +79,22 @@
     {
       "fullname":"Dawid Jasper",
       "birthdate":544741064000
+    },
+    {
+      "fullname":"Adam Małysz",
+      "brithday":250032311000
+    },
+    {
+      "fullname":"David Lynch",
+      "brithday":-755663689000
+    },
+    {
+      "fullname":"Mariusz Zbigniew Pudzianowski",
+      "brithday":224198711000
+    },
+    {
+      "fullname":"Bernie Sanders",
+      "brithday":-893471689000
     }
   ]
 }
