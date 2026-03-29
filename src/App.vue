@@ -9,10 +9,10 @@
   </header>
   <main>
     <WeatherTile/>
-    <Steam/>
+    <Date/>
     <BirthdayTile/>
     <MusicPlayer/>
-    <Date/>
+    <Steam/>
   </main>
 </template>
 <script>

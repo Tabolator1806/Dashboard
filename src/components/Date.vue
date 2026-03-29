@@ -3,7 +3,8 @@
 		<div id="title">Date</div>
 		<div id="content">
 			<div id="clock">
-				a
+				<img alt="face" src="@/assets/images/clock_face2.png"/>
+				<img alt="hour" :style="{transform: 'rotate('+setHourArm+'turn)'}" src="@/assets/images/clock_hour_arm.png"/>
 			</div>
 			<div id="info">
 				Todays Date: {{addZero(day)}}.{{addZero(month)}}.{{year}}<br/>
@@ -20,6 +21,8 @@
 				"year":0,
 				"month":0,
 				"day":0,
+				"hour":0,
+				"minutes":0,
 				"yearProgression":0,
       	"days":[0,31,59,90,120,151,181,212,242,273,304,334],
 				"daysPast":0
@@ -30,8 +33,11 @@
 			this.year=currentDate.getFullYear()
 			this.month=currentDate.getMonth()+1
 			this.day=currentDate.getDate()
+			this.hour=currentDate.getHours()
+			this.minutes=currentDate.getMinutes()
 			this.daysPast = this.days[this.month] + this.day
 			this.yearProgression = Math.round(((this.daysPast)/365)*10000)/100
+			console.log((this.hour*100 + this.minutes)/1200)
 		},
 		methods:{
 			addZero(inttime){
@@ -41,6 +47,11 @@
 				}
 				return time
 			},
+		},
+		computed:{
+			setHourArm(){
+				return (this.hour*100 + this.minutes)/1200
+			}
 		}
 	}
 </script>
@@ -48,6 +59,17 @@
 #clock{
 	width:29%;
 	float:left;
+	position:relative;
+	img{
+		margin-top:-13px;
+		width:150px;
+		height:150px;
+	}
+	img[alt="hour"]{
+		position:absolute;
+		left:0;
+		top:0;
+	}
 }
 #info{
 	width:70%;
