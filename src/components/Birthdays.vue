@@ -22,7 +22,7 @@
 import birthdays from '@/assets/birthdays.json'
 export default {
   created(){
-    const daysThatHappened = this.showInDays(Date.now())
+    const daysThatHappened = this.showInDays(Date.now()-86400000)
     let birthdayPeople = []
     for(let i = 0; i < this.birthdaylist.length; i++){
       const person = this.birthdaylist[i]
@@ -32,9 +32,7 @@ export default {
         birthdayPeople.push(person)
       }
     }
-    console.log(birthdayPeople)
     this.sortByDaysLeft(birthdayPeople)
-    console.log(birthdayPeople)
     this.showInfo(birthdayPeople[0])
   },
   data() {

@@ -2,20 +2,20 @@
   <div id="weather" class="tile">
     <div id="title">Todays weather</div>
     <div>
+      <div id="info">
+        - Temperature: {{weather.temperatura}}°C <br/>
+        - Pressure: {{weather.cisnienie}} hPa<br/>
+        - Wind: {{windDirection}} {{weather.predkosc_wiatru}} km/h<br/>
+        - Humidity: {{weather.wilgotnosc_wzgledna}} %
+      </div>
       <div id="img">
         {{weatherIcon}}
-      </div>
-      <div id="info">
-        Temperature: {{weather.temperatura}}°C <br/>
-        Pressure: {{weather.cisnienie}} hPa<br/>
-        Wind: {{windDirection}} {{weather.predkosc_wiatru}} km/h<br/>
-        Humidity: {{weather.wilgotnosc_wzgledna}} %
       </div>
     </div>
   </div>
 </template>
 <script>
-  import { getWeather } from '@/api'
+import { getWeather } from '@/api'
 export default {
   data() {
     return {
@@ -23,10 +23,18 @@ export default {
     }
   },
   created(){
-    getWeather('krakow').then(data=>{
-      console.log(data)
-      this.weather = data
-    })
+    this.getApiWeather('krakow')
+  },
+  methods:{
+    getApiWeather(place){
+      getWeather(place).then(data=>{
+        console.log(data)
+        this.weather = data
+      })
+      setTimeout(()=>{
+        this.getApiWeather(place)
+      },3600)
+    }
   },
   computed: {
     weatherIcon(){
@@ -72,16 +80,16 @@ export default {
   #weather{
     width:350px;
     #img{
-      width:29%;
+      width:39%;
       float:left;
       text-align:center;
       font-size:80px;
     }
     #info{
-      width:70%;
+      width:60%;
       float:left;
-      text-align:right;
       margin-top:8px;
+      text-align:left;
     }
   }
 </style>

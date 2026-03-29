@@ -6,7 +6,7 @@
         <img :src="album" alt="albumImage" width="100px" height="100px"/>
       </div>
       <div id="info">
-        <h2>{{title}}</h2>
+        <h2>{{title}} - {{author}}</h2>
         <div id="time">{{showCurrentTime}}/{{showDuration}}</div>
         <input type="range" :max="trackduration" v-model="audio.currentTime" id="timeslider"/><br/>
         <div id="controls">
@@ -36,6 +36,7 @@ export default {
       musiclist:list.list,
       album:"",
       title:"",
+      author:"unknown",
       audio:"",
       playswitch:true,
       trackduration:0,
@@ -49,6 +50,9 @@ export default {
     refresh(){
       this.album = "/src/assets/images/" + this.musiclist[this.index].album + ".png"
       this.title = this.musiclist[this.index].title
+      this.author = this.musiclist[this.index].author
+      if (this.audio!="")
+        this.audio.pause()
       this.audio = new Audio(`/src/assets/music/${this.musiclist[this.index].title}.mp3`)
       this.currenttracktime = 0
       this.audio.addEventListener("loadeddata",()=>{
@@ -65,9 +69,9 @@ export default {
     stopTrack(){
       this.audio.pause()
       this.playswitch = true
+      this.autoplay = false
     },
     changeTrack(number){
-      this.stopTrack()
       this.index = (this.index + number)%(this.musiclist.length)
       if (this.index<0) this.index = (this.musiclist.length) + this.index
       this.refresh()
@@ -167,6 +171,10 @@ export default {
           }
           button{
             width:25px;
+            border-top-color:rgb(55, 200, 106);
+            border-right-color:rgb(35, 128, 68);
+            border-bottom-color:rgb(35, 128, 68);
+            border-left-color:rgb(55, 200, 106);
           }
         }
         #buttons{
@@ -176,6 +184,10 @@ export default {
           bottom:40%;
           button{
             width:25px;
+            border-top-color:rgb(55, 200, 106);
+            border-right-color:rgb(35, 128, 68);
+            border-bottom-color:rgb(35, 128, 68);
+            border-left-color:rgb(55, 200, 106);
           }
         }
       }

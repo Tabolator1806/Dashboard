@@ -7,7 +7,6 @@
 				<img alt="hour" :style="{transform: 'rotate('+setHourArm+'turn)'}" src="@/assets/images/clock_hour_arm.png"/>
 				<img alt="minutes" :style="{transform: 'rotate('+setMinutesArm+'turn)'}" src="@/assets/images/clock_hour_arm.png"/>
 			</div>
-			{{hour}}:{{minutes}}:{{seconds}}
 			<div id="info">
 				Todays Date: {{addZero(day)}}.{{addZero(month)}}.{{year}}<br/>
 				<div id="bar"><div id="progress" :style="{width: yearProgression+'%'}">{{yearProgression}}%</div></div>
