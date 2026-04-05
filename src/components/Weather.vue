@@ -79,15 +79,16 @@ export default {
 <style>
   #weather{
     width:350px;
+    display:flex;
+    flex-direction:column;
     #img{
-      width:39%;
-      float:left;
-      text-align:center;
+      flex:1 0 40%;
+      text-align:right;
+      margin-right:20px;
       font-size:80px;
     }
     #info{
-      width:60%;
-      float:left;
+      flex:1 0 60%;
       margin-top:8px;
       text-align:left;
     }

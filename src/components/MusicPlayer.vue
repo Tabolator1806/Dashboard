@@ -1,5 +1,5 @@
 <template>
-  <div id="musicplayer" class="tile">
+  <div id="musicplayer" class="tile" style="flex:1 0 40%">
     <div id="title">Music Player</div>
     <div id="main">
       <div id="image">
@@ -131,7 +131,7 @@ export default {
   #main{
     display:flex;
     flex-direction:row;
-
+    flex-wrap:nowrap;
     #image{
       display:flex;
       align-items:center;
