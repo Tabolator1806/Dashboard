@@ -5,12 +5,12 @@
 			<div id="clock">
 				<img alt="face" src="@/assets/images/clock_face2.png"/>
 				<img alt="hour" :style="{transform: 'rotate('+setHourArm+'turn)'}" src="@/assets/images/clock_hour_arm.png"/>
-				<img alt="minutes" :style="{transform: 'rotate('+setMinutesArm+'turn)'}" src="@/assets/images/clock_hour_arm.png"/>
+				<img alt="minutes" :style="{transform: 'rotate('+setMinutesArm+'turn)'}" src="@/assets/images/clock_minutes_arm.png"/>
 			</div>
 			<div id="info">
 				Todays Date: {{addZero(day)}}.{{addZero(month)}}.{{year}}<br/>
 				<div id="bar"><div id="progress" :style="{width: yearProgression+'%'}">{{yearProgression}}%</div></div>
-				<br/>{{daysPast}} days has passed
+				<br/>{{daysPast}} days had passed
 			</div>
 		</div>
 	</div>
@@ -59,7 +59,7 @@
 				return (this.hour*100 + this.minutes)/1200
 			},
 			setMinutesArm(){
-				return this.minutes/60
+				return (this.minutes*100+this.seconds)/6000
 			},
 			daysPast(){
 				return this.days[this.month] + this.day
@@ -76,9 +76,8 @@
 	float:left;
 	position:relative;
 	img{
-		margin-top:-13px;
-		width:150px;
-		height:150px;
+		width:120px;
+		height:120px;
 	}
 	img[alt="hour"]{
 		position:absolute;
