@@ -1,7 +1,10 @@
 @font-face {
     font-family: "AgaveNerdFontPropo";
     src: url("AgaveNerdFontPropo-Regular.ttf");
-  }
+}
+:root{
+  --main-color: #2DA457;
+}
 *{
   font-family:"AgaveNerdFontPropo";
   font-size:15px;
@@ -23,16 +26,15 @@ main{
   margin:0 100px;
 }
 .tile{
-  border:2px solid #2DA457;
+  border:2px solid var(--main-color);
   height:170px;
   padding:10px;
   width:100%;
-  /* background: rgba(0,0,0,0.5); */
-  color:#2DA457;
+  color:var(--main-color);
   #title{
     text-align:center;
     width:100%;
-    border-bottom:2px solid #2DA457;
+    border-bottom:2px solid var(--main-color);
     margin-bottom:5px;
     font-weight:bold;
     letter-spacing:5px;
@@ -40,7 +42,7 @@ main{
   }
 }
 .tile button{
-  color:#2DA457;
+  color:var(--main-color);
   background:black;
 }
 input[type=range]{
@@ -49,7 +51,7 @@ input[type=range]{
   background:transparent;
 }
 input[type=range]::-webkit-slider-runnable-track,input[type=range]::-moz-range-track{
-  background:#2DA457;
+  background:var(--main-color);
   height:3px;
   width:100%;
 }
@@ -62,9 +64,27 @@ input[type=range]::-webkit-slider-thumb,input[type=range]::-moz-range-thumb{
   border-right-color:rgb(35, 128, 68);
   border-bottom-color:rgb(35, 128, 68);
   border-left-color:rgb(55, 200, 106);
-  background:#2DA457;
+  background:var(--main-color);
   margin-top:-6px;
 }
 #info{
   font-size:20px;
+}
+button{
+  min-width:25px;
+  border-top-color:rgb(55, 200, 106);
+  border-right-color:rgb(35, 128, 68);
+  border-bottom-color:rgb(35, 128, 68);
+  border-left-color:rgb(55, 200, 106);
+}
+select{
+  background:black;
+  color:var(--main-color); 
+  border-top-color:rgb(55, 200, 106);
+  border-right-color:rgb(35, 128, 68);
+  border-bottom-color:rgb(35, 128, 68);
+  border-left-color:rgb(55, 200, 106);
+}
+::picker(select){
+  background:red;
 }

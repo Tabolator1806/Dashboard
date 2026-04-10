@@ -28,7 +28,6 @@ export default {
   methods:{
     getApiWeather(place){
       getWeather(place).then(data=>{
-        console.log(data)
         this.weather = data
       })
       setTimeout(()=>{
@@ -38,7 +37,7 @@ export default {
   },
   computed: {
     weatherIcon(){
-      if(this.weather.suma_opadu>0){
+      if(this.weather.suma_opadu>1){
         if(this.weather.temperatura<0){
           return ""
         }
@@ -82,9 +81,9 @@ export default {
     flex-direction:column;
     #img{
       flex:1 0 40%;
-      text-align:right;
+      text-align:center;
       margin-right:20px;
-      font-size:80px;
+      font-size:100px;
     }
     #info{
       flex:1 0 60%;

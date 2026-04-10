@@ -47,7 +47,6 @@
 				this.hour=currentDate.getHours()
 				this.minutes=currentDate.getMinutes()
 				this.seconds=currentDate.getSeconds()
-				console.log((this.hour*100 + this.minutes)/1200)
 				setTimeout(()=>{
 						this.getTime()
 					},1000

@@ -15,6 +15,7 @@
     <BirthdayTile/>
     <MusicPlayer/>
     <Steam/>
+    <NameGenerator/>
   </main>
 </template>
 <script>
@@ -26,6 +27,7 @@ import Date from '@/components/Date.vue'
 import Tile from '@/components/Tile.vue'
 import texts from '@/assets/texts.json'
 import Cat from '@/components/Cat.vue'
+import NameGenerator from '@/components/NameGenerator.vue'
 export default {
   components:{
     "WeatherTile":Weather,
@@ -34,7 +36,8 @@ export default {
     "Steam":Steam,
     "Date":Date,
     "Tile":Tile,
-    "Cat":Cat
+    "Cat":Cat,
+    "NameGenerator":NameGenerator
   },
   data() {
     return {
