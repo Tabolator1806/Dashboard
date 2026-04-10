@@ -10,7 +10,8 @@
   <main>
     <WeatherTile/>
     <Date/>
-    <Tile title="Test tile" text="Lorem Ipsum"/>
+    <Tile title="Description" :text="desc"/>
+    <Cat/>
     <BirthdayTile/>
     <MusicPlayer/>
     <Steam/>
@@ -23,6 +24,8 @@ import Birthdays from '@/components/Birthdays.vue'
 import Steam from '@/components/Steam.vue'
 import Date from '@/components/Date.vue'
 import Tile from '@/components/Tile.vue'
+import texts from '@/assets/texts.json'
+import Cat from '@/components/Cat.vue'
 export default {
   components:{
     "WeatherTile":Weather,
@@ -30,8 +33,15 @@ export default {
     "BirthdayTile":Birthdays,
     "Steam":Steam,
     "Date":Date,
-    "Tile":Tile
-  }
+    "Tile":Tile,
+    "Cat":Cat
+  },
+  data() {
+    return {
+      "testText":texts.testText,
+      desc:texts.description
+    }
+  },
 }
 </script>
 

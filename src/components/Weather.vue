@@ -78,7 +78,6 @@ export default {
 </script>
 <style>
   #weather{
-    width:350px;
     display:flex;
     flex-direction:column;
     #img{

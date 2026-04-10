@@ -127,7 +127,6 @@ export default {
 </script>
 <style scoped>
 #musicplayer{
-  width:500px;
   #main{
     display:flex;
     flex-direction:row;

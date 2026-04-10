@@ -16,12 +16,17 @@ nav{
 body{
   background:black;
 }
+main{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  grid-gap:10px;
+  margin:0 100px;
+}
 .tile{
   border:2px solid #2DA457;
-  width:min-content;
   height:170px;
   padding:10px;
-  flex:1 0 30%;
+  width:100%;
   /* background: rgba(0,0,0,0.5); */
   color:#2DA457;
   #title{
@@ -59,13 +64,6 @@ input[type=range]::-webkit-slider-thumb,input[type=range]::-moz-range-thumb{
   border-left-color:rgb(55, 200, 106);
   background:#2DA457;
   margin-top:-6px;
-}
-main{
-  display:flex;
-  flex-wrap:wrap;
-  flex-direction:row;
-  gap:10px;
-  margin:0 100px;
 }
 #info{
   font-size:20px;
