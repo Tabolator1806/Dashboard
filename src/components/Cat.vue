@@ -20,15 +20,15 @@
 		},
 		methods: {
 			rollFirst(){
-				this.firstsrc="https://cataas.com/cat/says/C?width=125&height=125&skibi="+Math.round(Math.random()*10)
+				this.firstsrc="https://cataas.com/cat/says/C?width=125&height=125&skibi="+Math.round(Math.random()*100)
 				this.meow()
 			},
 			rollSecond(){
-				this.secondsrc="https://cataas.com/cat/says/A?width=125&height=125&skibi="+Math.round(Math.random()*10)
+				this.secondsrc="https://cataas.com/cat/says/A?width=125&height=125&skibi="+Math.round(Math.random()*100)
 				this.meow()
 			},
 			rollThird(){
-				this.thirdsrc="https://cataas.com/cat/says/T?width=125&height=125&skibi="+Math.round(Math.random()*10)
+				this.thirdsrc="https://cataas.com/cat/says/T?width=125&height=125&skibi="+Math.round(Math.random()*100)
 				this.meow()
 			},
 			meow(){
