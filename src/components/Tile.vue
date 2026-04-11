@@ -1,7 +1,7 @@
 <template>
 	<div class="tile">
 		<div id="title">{{title}}</div>
-		<div id="text">{{text}}</div>
+		<p id="text">{{text}}</p>
 	</div>
 </template>
 <script>
@@ -18,7 +18,8 @@
 
 		}
 		#text{
-			overflow:hidden !important;
+			overflow:hidden;
+			white-space:pre-line;
 		}
 	}
 </style>

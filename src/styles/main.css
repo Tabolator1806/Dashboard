@@ -3,7 +3,9 @@
     src: url("AgaveNerdFontPropo-Regular.ttf");
 }
 :root{
-  --main-color: #2DA457;
+  --main-color: rgb(45, 164, 87);
+  --upper-border-color:rgb(55, 200, 106);
+  --lower-border-color:rgb(23, 85, 45);
 }
 *{
   font-family:"AgaveNerdFontPropo";
@@ -60,10 +62,10 @@ input[type=range]::-webkit-slider-thumb,input[type=range]::-moz-range-thumb{
   height:15px;
   width:9px;
   border:2px solid;
-  border-top-color:rgb(55, 200, 106);
-  border-right-color:rgb(35, 128, 68);
-  border-bottom-color:rgb(35, 128, 68);
-  border-left-color:rgb(55, 200, 106);
+  border-top-color:var(--upper-border-color);
+  border-right-color:var(--lower-border-color);
+  border-bottom-color:var(--lower-border-color);
+  border-left-color:var(--upper-border-color);
   background:var(--main-color);
   margin-top:-6px;
 }
@@ -72,19 +74,37 @@ input[type=range]::-webkit-slider-thumb,input[type=range]::-moz-range-thumb{
 }
 button{
   min-width:25px;
-  border-top-color:rgb(55, 200, 106);
-  border-right-color:rgb(35, 128, 68);
-  border-bottom-color:rgb(35, 128, 68);
-  border-left-color:rgb(55, 200, 106);
+  border-top-color:var(--upper-border-color);
+  border-right-color:var(--lower-border-color);
+  border-bottom-color:var(--lower-border-color);
+  border-left-color:var(--upper-border-color);
 }
 select{
   background:black;
   color:var(--main-color); 
-  border-top-color:rgb(55, 200, 106);
-  border-right-color:rgb(35, 128, 68);
-  border-bottom-color:rgb(35, 128, 68);
-  border-left-color:rgb(55, 200, 106);
+  border-top-color:var(--upper-border-color);
+  border-right-color:var(--lower-border-color);
+  border-bottom-color:var(--lower-border-color);
+  border-left-color:var(--upper-border-color);
 }
 ::picker(select){
   background:red;
+}
+input{
+  background:black;
+  color:var(--main-color);
+  border-top-color:var(--upper-border-color);
+  border-right-color:var(--lower-border-color);
+  border-bottom-color:var(--lower-border-color);
+  border-left-color:var(--upper-border-color);
+}
+#bar{
+	width:250px;
+	background:gray;
+	color:black;
+	position:absolute;
+	right:3px;
+	#progress{
+		background:var(--main-color);
+	}
 }

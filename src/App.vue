@@ -16,6 +16,7 @@
     <MusicPlayer/>
     <Steam/>
     <NameGenerator/>
+    <ColorPicker/>
   </main>
 </template>
 <script>
@@ -28,6 +29,7 @@ import Tile from '@/components/Tile.vue'
 import texts from '@/assets/texts.json'
 import Cat from '@/components/Cat.vue'
 import NameGenerator from '@/components/NameGenerator.vue'
+import ColorPicker from '@/components/ColorPicker.vue'
 export default {
   components:{
     "WeatherTile":Weather,
@@ -37,7 +39,8 @@ export default {
     "Date":Date,
     "Tile":Tile,
     "Cat":Cat,
-    "NameGenerator":NameGenerator
+    "NameGenerator":NameGenerator,
+    "ColorPicker":ColorPicker
   },
   data() {
     return {

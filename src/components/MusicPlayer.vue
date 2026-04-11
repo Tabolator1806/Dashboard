@@ -168,26 +168,12 @@ export default {
           input[type=range]{
             width:80px;
           }
-          button{
-            width:25px;
-            border-top-color:rgb(55, 200, 106);
-            border-right-color:rgb(35, 128, 68);
-            border-bottom-color:rgb(35, 128, 68);
-            border-left-color:rgb(55, 200, 106);
-          }
         }
         #buttons{
           display:flex;
           position:absolute;
           right:45%;
           bottom:40%;
-          button{
-            width:25px;
-            border-top-color:rgb(55, 200, 106);
-            border-right-color:rgb(35, 128, 68);
-            border-bottom-color:rgb(35, 128, 68);
-            border-left-color:rgb(55, 200, 106);
-          }
         }
       }
     }

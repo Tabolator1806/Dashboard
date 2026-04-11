@@ -6,7 +6,8 @@
         - Temperature: {{weather.temperatura}}°C <br/>
         - Pressure: {{weather.cisnienie}} hPa<br/>
         - Wind: {{windDirection}} {{weather.predkosc_wiatru}} km/h<br/>
-        - Humidity: {{weather.wilgotnosc_wzgledna}} %
+        - Humidity: {{weather.wilgotnosc_wzgledna}} %<br/>
+        - City: Kraków
       </div>
       <div id="img">
         {{weatherIcon}}
@@ -87,7 +88,6 @@ export default {
     }
     #info{
       flex:1 0 60%;
-      margin-top:8px;
       text-align:left;
     }
   }
