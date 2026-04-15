@@ -26,12 +26,12 @@ main{
   grid-template-columns:1fr 1fr 1fr;
   grid-gap:10px;
   margin:0 100px;
+  width:100%;
 }
 .tile{
   border:2px solid var(--main-color);
   height:170px;
   padding:10px;
-  width:100%;
   color:var(--main-color);
   #title{
     text-align:center;
