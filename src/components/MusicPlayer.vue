@@ -53,7 +53,7 @@ export default {
       this.author = this.musiclist[this.index].author
       if (this.audio!="")
         this.audio.pause()
-      this.audio = new Audio(`/src/assets/music/${this.musiclist[this.index].title}.mp3`)
+      this.audio = new Audio(`http://10.252.146.2:8989/music/website/${this.musiclist[this.index].title}.mp3`)
       this.currenttracktime = 0
       this.audio.addEventListener("loadeddata",()=>{
         this.trackduration = this.audio.duration
