@@ -10,9 +10,9 @@
       <div v-else="daysleft"></div>
     </div>
     <div id="info">
-      Name: {{fullname.split(" ")[0]}} <br/>
-      Surname: {{fullname.split(" ")[1]}}<br/>
+      Full Name: {{fullname}} <br/>
       Birth Date: {{birthdate}}<br/>
+      <span v-if="deathdate" style="font-size:20px">Death Date: {{deathdate}}<br/></span>
       Age: {{age}}<br/>
       Sign: {{sign}}
     </div>
@@ -41,6 +41,7 @@ export default {
       days:[0,31,59,90,120,151,181,212,242,273,304,334],
       fullname:"",
       birthdate:"",
+      deathdate:"",
       daysleft:0,
       age:0,
       sign:""
@@ -82,10 +83,12 @@ export default {
     },
     showInfo(person){
         const birthdate = new Date(person.birthdate)
+        const deathdate = person.deathdate? new Date(person.deathdate) : 0
         this.fullname=person.fullname
         this.birthdate = `${this.addZero(birthdate.getDate())}.${this.addZero(birthdate.getMonth()+1)}.${birthdate.getFullYear()}`
+        this.deathdate = `${this.addZero(deathdate.getDate())}.${this.addZero(deathdate.getMonth()+1)}.${deathdate.getFullYear()}`
         this.daysleft = person.daysToBirthday
-        this.age = (new Date(Date.now())).getFullYear() - birthdate.getFullYear()
+        this.age = deathdate? (deathdate.getFullYear() - birthdate.getFullYear()) : (new Date(Date.now())).getFullYear() - birthdate.getFullYear()
         this.sign = this.getAstrologySign(this.showInDays(person.birthdate))
     },
     sortByDaysLeft(array){
@@ -119,6 +122,9 @@ export default {
     width:70%;
     float:left;
     text-align:right;
+    span{
+      font-size:20px;
+    }
   }
 }
 }

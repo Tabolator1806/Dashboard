@@ -29,16 +29,18 @@
       "birthdate":313157526000
     },
     {
-      "fullname":"Terry A. Davis",
-      "birthdate":-12311274000
+      "fullname":"Terry A. Davis \uDB82\uDD53",
+      "birthdate":-12311274000,
+      "deathdate": 1533986443000
     },
     {
       "fullname":"Alysia Liu",
       "birthdate":1123503126000
     },
     {
-      "fullname":"Christopher Lee",
-      "birthdate":-1502106474000
+      "fullname":"Christopher Lee \uDB82\uDD53",
+      "birthdate":-1502106474000,
+      "deathdate": 1433676043000
     },
     {
       "fullname":"Linus Torvalds",
@@ -73,8 +75,9 @@
       "birthdate":-643362722000
     },
     {
-      "fullname":"Jan Paweł II",
-      "birthdate":-1565941922000
+      "fullname":"Jan Paweł II \uDB82\uDD53",
+      "birthdate":-1565941922000,
+      "deathdate": 1112440843000
     },
     {
       "fullname":"Dawid Jasper",
@@ -82,19 +85,20 @@
     },
     {
       "fullname":"Adam Małysz",
-      "brithday":250032311000
+      "birthdate":250032311000
     },
     {
-      "fullname":"David Lynch",
-      "brithday":-755663689000
+      "fullname":"David Lynch \uDB82\uDD53",
+      "birthdate":-755663689000,
+      "deathdate": 1737026443000
     },
     {
       "fullname":"Mariusz Zbigniew Pudzianowski",
-      "brithday":224198711000
+      "birthdate":224198711000
     },
     {
       "fullname":"Bernie Sanders",
-      "brithday":-893471689000
+      "birthdate":-893471689000
     }
   ]
 }

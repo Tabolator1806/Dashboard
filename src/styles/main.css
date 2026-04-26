@@ -46,7 +46,7 @@ main{
 }
 .tile button{
   color:var(--main-color);
-  background:black;
+  background:transparent;
 }
 input[type=range]{
   -webkit-appearance:none;
@@ -81,7 +81,7 @@ button{
   border-left-color:var(--upper-border-color);
 }
 select{
-  background:black;
+  background:transparent;
   color:var(--main-color); 
   border-top-color:var(--upper-border-color);
   border-right-color:var(--lower-border-color);
@@ -92,7 +92,7 @@ select{
   background:red;
 }
 input{
-  background:black;
+  background:transparent;
   color:var(--main-color);
   border-top-color:var(--upper-border-color);
   border-right-color:var(--lower-border-color);

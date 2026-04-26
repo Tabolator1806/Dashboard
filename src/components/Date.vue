@@ -95,14 +95,4 @@
 	text-align:right;
 	position:relative;
 }
-#bar{
-	width:250px;
-	background:gray;
-	color:black;
-	position:absolute;
-	right:3px;
-	#progress{
-		background:#2DA457;
-	}
-}
 </style>
