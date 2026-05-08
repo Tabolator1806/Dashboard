@@ -1,15 +1,21 @@
 <template>
-  <main>
-    <WeatherTile/>
-    <Date/>
-    <Tile title="Description" :text="desc"/>
-    <Cat/>
-    <BirthdayTile/>
-    <MusicPlayer/>
-    <Steam/>
-    <NameGenerator/>
-    <ColorPicker/>
-  </main>
+    <table id="main">
+      <tr>
+        <td><WeatherTile/></td>
+        <td><Date/></td>
+        <td><Tile title="Description" :text="desc"/></td>
+      </tr>
+      <tr>
+        <td><Steam/></td>
+        <td><MusicPlayer/></td>
+        <td><Cat/></td>
+      </tr>
+      <tr>
+        <td><BirthdayTile/></td>
+        <td><NameGenerator/></td>
+        <td><ColorPicker/></td>
+      </tr>
+    </table>
 </template>
 <script>
 import Weather from '@/components/Weather.vue'

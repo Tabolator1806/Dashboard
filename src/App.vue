@@ -2,6 +2,10 @@
     <header>
       <nav>
         <RouterLink to="/" exact>Home</RouterLink>
+        <RouterLink to="/about" exact>About</RouterLink>
+        <RouterLink to="/music" exact>Music</RouterLink>
+        <RouterLink to="/chat" exact>Chat</RouterLink>
+        <RouterLink to="/blog" exact>Blog</RouterLink>
       </nav>
     </header>
     <RouterView/>

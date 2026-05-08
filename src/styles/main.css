@@ -14,20 +14,36 @@
   box-sizing:border-box;
 }
 nav{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  justify-items: center;
   height:50px;
+  margin-top: 20px;
   margin-bottom:20px;
-  font-size:20px;
+  border-bottom: var(--main-color) 2px solid;
+}
+nav a{
+  color:var(--main-color);
+  text-decoration: none;
+  font-size: 30px;
+}
+nav a:hover::before{
+  content:"> ";
+}
+nav a:hover::after{
+  content:" <"
 }
 body{
   background:black;
 }
-main{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  grid-gap:10px;
+#main{
   margin:0 auto;
-  padding:0 30px;
+  padding:0 40px;
   width:100%;
+}
+#main td{
+  padding:5px;
+  width:33%;
 }
 .tile{
   border:2px solid var(--main-color);

@@ -1,14 +1,14 @@
 <template>
   <div id="musicplayer" class="tile" style="flex:1 0 40%">
     <div id="title">Music Player</div>
-    <div id="main">
+    <div id="content">
       <div id="image">
         <img :src="album" alt="albumImage" width="100px" height="100px"/>
       </div>
       <div id="info">
         <h2>{{title}} - {{author}}</h2>
         <div id="time">{{showCurrentTime}}/{{showDuration}}</div>
-        <input type="range" :max="trackduration" v-model="audio.currentTime" id="timeslider"/><br/>
+        <input type="range" :max="trackduration" @input="updateTime" v-model="audio.currentTime" id="timeslider"/><br/>
         <div id="controls">
           <div id="buttons">
             <button @click="changeTrack(-1)">󰒮</button>
@@ -104,6 +104,10 @@ export default {
       else{
         this.volume = this.savedVolume
       }
+    },
+    updateTime(){
+      this.audio.play()
+      this.autoplay ? 0:this.audio.pause()
     }
   },
   computed: {
@@ -127,7 +131,7 @@ export default {
 </script>
 <style scoped>
 #musicplayer{
-  #main{
+  #content{
     display:flex;
     flex-direction:row;
     flex-wrap:nowrap;
