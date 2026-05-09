@@ -32,7 +32,7 @@
 				this.meow()
 			},
 			meow(){
-				const sound = new Audio(`/src/assets/meows/meow${Math.floor(Math.random()*4)}.mp3`)
+				const sound = new Audio(`http://10.252.146.2/static/meows/meow${Math.floor(Math.random()*4)}.mp3`)
 				sound.play()
 			}
 		},

@@ -6,14 +6,15 @@
         <img :src="album" alt="albumImage" width="100px" height="100px"/>
       </div>
       <div id="info">
-        <h2>{{title}} - {{author}}</h2>
+        <marquee v-if="title.length>22">{{title}} - {{author}}</marquee>
+        <h2 v-else>{{title}} - {{author}}</h2>
         <div id="time">{{showCurrentTime}}/{{showDuration}}</div>
         <input type="range" :max="trackduration" @input="updateTime" v-model="audio.currentTime" id="timeslider"/><br/>
         <div id="controls">
           <div id="buttons">
             <button @click="changeTrack(-1)">󰒮</button>
-            <button @click="playTrack" v-if="playswitch">󰐊</button>
-            <button @click="stopTrack" v-else="playswitch">󰏤</button>
+            <button @click="audio.play()" v-if="playswitch">󰐊</button>
+            <button @click="audio.pause()" v-else="playswitch">󰏤</button>
             <button @click="changeTrack(1)">󰒭</button>
           </div>
           <div id=volume>
@@ -26,6 +27,7 @@
 </template>
 <script>
 import list from '@/assets/musiclist.json'
+
 export default {
   created(){
     this.refresh()
@@ -48,7 +50,7 @@ export default {
   },
   methods: {
     refresh(){
-      this.album = "/src/assets/images/" + this.musiclist[this.index].album + ".png"
+      this.album = "http://10.252.146.2/static/albums/" + this.musiclist[this.index].album + ".png"
       this.title = this.musiclist[this.index].title
       this.author = this.musiclist[this.index].author
       if (this.audio!="")
@@ -59,17 +61,9 @@ export default {
         this.trackduration = this.audio.duration
         this.audio.volume = this.volume
       })
-    this.audio.addEventListener("playing",()=>this.trackTime())
-    },
-    playTrack(){
-      this.audio.play()
-      this.playswitch = false
-      this.autoplay = true
-    },
-    stopTrack(){
-      this.audio.pause()
-      this.playswitch = true
-      this.autoplay = false
+      this.audio.addEventListener("playing",()=>this.trackTime())
+      this.audio.addEventListener("play",()=>{this.playswitch=false;this.autoplay=true})
+      this.audio.addEventListener("pause",()=>{this.playswitch=true;this.autoplay=false})
     },
     changeTrack(number){
       this.index = (this.index + number)%(this.musiclist.length)
@@ -145,10 +139,13 @@ export default {
       width:fit-content;
       flex-grow:1;
       position:relative;
-      h2{
+      h2, marquee{
         width:100%;
         margin-bottom:10px;
         text-align:center;
+      }
+      marquee{
+        margin:4px;
       }
       #time{
         width:100%;
