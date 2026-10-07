@@ -6,7 +6,7 @@
         <img :src="album" alt="albumImage" width="100px" height="100px"/>
       </div>
       <div id="info">
-        <marquee v-if="title.length>22">{{title}} - {{author}}</marquee>
+        <marquee v-if="title.length+author.length>40-3" scrollamount="5">{{title}} - {{author}}</marquee>
         <h2 v-else>{{title}} - {{author}}</h2>
         <div id="time">{{showCurrentTime}}/{{showDuration}}</div>
         <input type="range" :max="trackduration" @input="updateTime" v-model="audio.currentTime" id="timeslider"/><br/>
