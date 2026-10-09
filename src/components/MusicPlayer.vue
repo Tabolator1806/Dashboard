@@ -27,7 +27,7 @@
 </template>
 <script>
 import list from '@/assets/musiclist.json'
-
+import global from "@/api/global.js";
 export default {
   created(){
     this.refresh()
@@ -50,12 +50,12 @@ export default {
   },
   methods: {
     refresh(){
-      this.album = "http://10.252.146.2/static/albums/" + this.musiclist[this.index].album + ".png"
+      this.album = "http://"+global.server_ip+"/static/albums/" + this.musiclist[this.index].album + ".png"
       this.title = this.musiclist[this.index].title
       this.author = this.musiclist[this.index].author
       if (this.audio!="")
         this.audio.pause()
-      this.audio = new Audio(`http://10.252.146.2/static/music/website/${this.musiclist[this.index].title}.mp3`)
+      this.audio = new Audio(`http://${global.server_ip}/static/music/website/${this.musiclist[this.index].title}.mp3`)
       this.currenttracktime = 0
       this.audio.addEventListener("loadeddata",()=>{
         this.trackduration = this.audio.duration

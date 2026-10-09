@@ -1,10 +1,6 @@
 <template>
-	<div>
-		<div id="title">Page not found</div>
+	<div id="page-not-found">
+		<div>Page not found</div>
+    <hr>
 	</div>
 </template>
-<style lang="css">
-#title{
-	font-size:150px;
-}
-</style>

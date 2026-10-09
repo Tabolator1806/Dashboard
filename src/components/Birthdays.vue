@@ -84,9 +84,10 @@ export default {
     showInfo(person){
         const birthdate = new Date(person.birthdate)
         const deathdate = person.deathdate? new Date(person.deathdate) : 0
+        console.log(deathdate)
         this.fullname=person.fullname
         this.birthdate = `${this.addZero(birthdate.getDate())}.${this.addZero(birthdate.getMonth()+1)}.${birthdate.getFullYear()}`
-        this.deathdate = `${this.addZero(deathdate.getDate())}.${this.addZero(deathdate.getMonth()+1)}.${deathdate.getFullYear()}`
+        this.deathdate = person.deathdate? `${this.addZero(deathdate.getDate())}.${this.addZero(deathdate.getMonth()+1)}.${deathdate.getFullYear()}` : 0
         this.daysleft = person.daysToBirthday
         this.age = deathdate? (deathdate.getFullYear() - birthdate.getFullYear()) : (new Date(Date.now())).getFullYear() - birthdate.getFullYear()
         this.sign = this.getAstrologySign(this.showInDays(person.birthdate))
