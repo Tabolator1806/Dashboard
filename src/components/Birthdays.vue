@@ -84,7 +84,7 @@ export default {
     showInfo(person){
         const birthdate = new Date(person.birthdate)
         const deathdate = person.deathdate? new Date(person.deathdate) : 0
-      console.log(deathdate)
+        console.log(deathdate)
         this.fullname=person.fullname
         this.birthdate = `${this.addZero(birthdate.getDate())}.${this.addZero(birthdate.getMonth()+1)}.${birthdate.getFullYear()}`
         this.deathdate = person.deathdate? `${this.addZero(deathdate.getDate())}.${this.addZero(deathdate.getMonth()+1)}.${deathdate.getFullYear()}` : 0

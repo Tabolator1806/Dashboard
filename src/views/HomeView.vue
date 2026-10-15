@@ -15,9 +15,6 @@
         <td><NameGenerator/></td>
         <td><ColorPicker/></td>
       </tr>
-      <tr>
-        <td><Gambling/></td>
-      </tr>
     </table>
 </template>
 <script>
@@ -31,7 +28,6 @@ import texts from '@/assets/texts.json'
 import Cat from '@/components/Cat.vue'
 import NameGenerator from '@/components/NameGenerator.vue'
 import ColorPicker from '@/components/ColorPicker.vue'
-import Gambling from '@/components/Gambling.vue'
 export default {
   components:{
     "WeatherTile":Weather,
@@ -42,8 +38,7 @@ export default {
     "Tile":Tile,
     "Cat":Cat,
     "NameGenerator":NameGenerator,
-    "ColorPicker":ColorPicker,
-    "Gambling":Gambling
+    "ColorPicker":ColorPicker
   },
   data() {
     return {

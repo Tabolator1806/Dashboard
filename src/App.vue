@@ -3,7 +3,7 @@
       <nav>
         <RouterLink to="/" exact>Home</RouterLink>
         <RouterLink to="/about" exact>About</RouterLink>
-        <RouterLink to="/music" exact>Music</RouterLink>
+        <a :href="`http://${server_ip}/music`" exact>Music</a>
         <RouterLink to="/chat" exact>Chat</RouterLink>
         <RouterLink to="/blog" exact>Blog</RouterLink>
       </nav>
@@ -11,13 +11,18 @@
     <RouterView/>
 </template>
 <script>
+import global from "@/api/global.js";
 export default {
   created() {
     document.body.style.background= window.matchMedia('(prefers-color-scheme: dark)').matches? "black" : "white"
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
       document.body.style.background= event.matches? "black" : "white"
     });
-
+  },
+  data(){
+    return {
+      server_ip:global.server_ip
+    }
   }
 }
 </script>
