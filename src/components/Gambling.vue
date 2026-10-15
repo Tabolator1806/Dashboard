@@ -2,9 +2,9 @@
 	<div id="gambling" class="tile">
 		<div id="title">Gambling</div>
 		<div id="content">
-			<div class="slot"><img :src="slot1"/></div>
-			<div class="slot"><img :src="slot2"/></div>
-			<div class="slot"><img :src="slot3"/></div>
+			<div class="slot">{{slot1}}<img :src="slot1"/></div>
+			<div class="slot">{{slot2}}<img :src="slot2"/></div>
+			<div class="slot">{{slot3}}<img :src="slot3"/></div>
 			<div id="hand"><input type="range" value="0"/></div>
 		</div>
 	</div>
@@ -13,6 +13,14 @@
 export default {
 	data() {
 		return {
+			slot1:"",
+			slot2:"",
+			slot3:"",
+			slotOptions:[7]
+		}
+	},
+	methods: {
+		setSlots(){
 			
 		}
 	},
