@@ -1,7 +1,7 @@
 <template>
   <div id="musicplayer" class="tile" style="flex:1 0 40%">
     <div id="title">Music Player</div>
-    <div id="content">
+    <div class="content">
       <div id="image">
         <img :src="album" alt="albumImage" width="100px" height="100px"/>
       </div>
@@ -125,7 +125,7 @@ export default {
 </script>
 <style scoped>
 #musicplayer{
-  #content{
+  .content{
     display:flex;
     flex-direction:row;
     flex-wrap:nowrap;

@@ -1,7 +1,7 @@
 <template>
 	<div id="date" class="tile">
 		<div id="title">Date</div>
-		<div id="content">
+		<div class="content">
 			<div id="clock">
 				<img alt="face" src="@/assets/images/clock_face2.png"/>
 				<img alt="hour" :style="{transform: 'rotate('+setHourArm+'turn)'}" src="@/assets/images/clock_hour_arm.png"/>
