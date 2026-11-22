@@ -4,8 +4,8 @@
 		<div id="picker">
 			<div id="inputs">
 				<input type="range" min="0" max="255" v-model="red" @input="changeColorFromRange"/>
-				<input type="range" min="0" max="255" v-model="blue" @input="changeColorFromRange"/>
 				<input type="range" min="0" max="255" v-model="green" @input="changeColorFromRange"/>
+				<input type="range" min="0" max="255" v-model="blue" @input="changeColorFromRange"/>
 			</div>
 			<div id="showcase">
 				<div :style='{width:"100px",height:"100px",background:color}'></div>
@@ -13,6 +13,8 @@
 		</div>
 		<input v-model="color"/>
 		<button @click="changeColor">Change Color</button>
+		<button @click="randomizeColors">Randomize</button>
+		<button @click="rainbowColors">Rainbow</button>
 	</div>
 </template>
 <script>
@@ -27,7 +29,8 @@ export default {
 			color:getComputedStyle(document.querySelector(":root")).getPropertyValue("--main-color"),
 			red:0,
 			blue:0,
-			green:0
+			green:0,
+			rainbow:0
 		}
 	},
 	methods: {
@@ -44,8 +47,35 @@ export default {
 		},
 		changeColorFromRange(){
 			let color = this.color.slice(4,-1).split(",").map(el=>Number(el))
-			color[0]=this.red;color[1]=this.blue;color[2]=this.green
+			color[0]=this.red;color[2]=this.green;color[1]=this.blue
 			this.color = `rgb(${color})`
+		},
+		randomizeColors(){
+			this.red = Math.floor(Math.random(255) * 200)
+			this.blue = Math.floor(Math.random(255) * 200)
+			this.green = Math.floor(Math.random(255) * 200)
+			this.changeColorFromRange()
+			this.changeColor()
+		},
+		rainbowColors(){
+			!this.rainbow ? this.rainbow = 1 : this.rainbow = 0
+			if(this.rainbow){
+				this.red = 255
+				this.blue = 0
+				this.green = 0
+				setInterval(() => {
+					if(this.green < 255 & this.red > 0){
+						this.red -= 1
+						this.green += 1
+					}
+					if(this.blue < 255 & this.green > 0){
+						this.blue += 1
+						this.green -= 1
+					}
+					this.changeColor()
+					this.changeColorFromRange()
+				}, 100);
+			}
 		}
 	},
 }

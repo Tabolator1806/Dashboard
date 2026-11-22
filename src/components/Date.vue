@@ -11,6 +11,7 @@
 				Todays Date: {{addZero(day)}}.{{addZero(month)}}.{{year}}<br/>
 				<div id="bar"><div id="progress" :style="{width: yearProgression+'%'}">{{yearProgression}}%</div></div>
 				<br/>{{daysPast}} days had passed
+				<br/>{{daysToGo}} days to go
 			</div>
 		</div>
 	</div>
@@ -25,7 +26,9 @@
 				"hour":0,
 				"minutes":0,
 				"seconds":0,
-      	"days":[0,31,59,90,120,151,181,212,242,273,304,334],
+      	// "days":[0,31,59,90,120,151,181,212,242,273,304,334],
+        "daysPast":0,
+				"daysToGo":0
 			}
 		},
 		created(){
@@ -47,6 +50,13 @@
 				this.hour=currentDate.getHours()
 				this.minutes=currentDate.getMinutes()
 				this.seconds=currentDate.getSeconds()
+        var now = new Date();
+        var start = new Date(now.getFullYear(), 0, 0);
+        var diff = now - start;
+        var oneDay = 1000 * 60 * 60 * 24;
+        this.daysPast = Math.floor(diff / oneDay);
+				this.daysToGo = this.year%4==0 ? 364 - this.daysPast : 365 - this.daysPast
+				//this.daysToGo = True : 365 - this.daysPast ? 0
 				setTimeout(()=>{
 						this.getTime()
 					},1000
@@ -59,9 +69,6 @@
 			},
 			setMinutesArm(){
 				return (this.minutes*100+this.seconds)/6000
-			},
-			daysPast(){
-				return this.days[this.month] + this.day
 			},
 			yearProgression(){
 				return Math.round(((this.daysPast)/365)*10000)/100
